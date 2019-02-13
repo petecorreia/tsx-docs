@@ -1,0 +1,20 @@
+{
+	"name": "tsx-docs-project",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "tsx-docs dev",
+		"build": "tsx-docs build",
+		"start": "tsx-docs start",
+		"export": "tsx-docs export",
+		"typecheck": "tsc"
+	},
+	"dependencies": {
+		"react": "^16.8.1",
+		"react-dom": "^16.8.1",
+		"tsx-docs": "latest"
+	},
+	"devDependencies": {
+		"typescript": "3.2.4"
+	},
+	"license": "MIT"
+}

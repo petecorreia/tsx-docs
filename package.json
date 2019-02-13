@@ -1,0 +1,92 @@
+{
+	"name": "tsx-docs",
+	"version": "0.0.1",
+	"description": "Cocumentation for your React Typescript components powered by Next.js, Styled Components and Rebass.",
+	"author": "Pete Correia <pete@petecorreia.com> (https://petecorreia.com)",
+	"license": "MIT",
+	"main": "dist/index.js",
+	"typings": "dist/index.d.ts",
+	"bin": {
+		"tsx-docs": "./dist/bin/index.js"
+	},
+	"files": [
+		"dist/**/*",
+		"template/**/*"
+	],
+	"scripts": {
+		"build": "npm run build:components && npm run build:bin",
+		"build:components": "tsc -p tsconfig.json",
+		"build:bin": "tsc -p tsconfig.bin.json",
+		"watch:components": "tsc -w -p tsconfig.json",
+		"watch:bin": "tsc -w -p tsconfig.bin.json",
+		"prepare": "npm run build",
+		"format": "prettier --config .prettierrc --write \"src/**/*.{js,ts,tsx}\"",
+		"lint": "tslint -p tsconfig.json -c tslint.json",
+		"tsx-docs": "ts-node src/bin/index.ts",
+		"docs:dev": "npm run tsx-docs dev docs",
+		"docs:build": "npm run tsx-docs build docs",
+		"docs:export": "npm run tsx-docs export docs"
+	},
+	"dependencies": {
+		"@babel/preset-typescript": "7.1.0",
+		"@zeit/next-css": "1.0.1",
+		"chalk": "2.4.2",
+		"execa": "^1.0.0",
+		"fs-extra": "^7.0.1",
+		"inquirer": "^6.2.2",
+		"listr": "^0.14.3",
+		"next": "8.0.0",
+		"next-server": "8.0.0",
+		"polished": "2.3.3",
+		"prismjs": "1.15.0",
+		"react": "16.8.1",
+		"react-dom": "16.8.1",
+		"rebass": "3.0.1",
+		"strip-indent": "2.0.0",
+		"styled-components": "4.1.3",
+		"yargs": "13.1.0"
+	},
+	"peerDependencies": {
+		"react": ">= 16.8.0",
+		"react-dom": ">= 16.8.0"
+	},
+	"devDependencies": {
+		"@types/execa": "^0.9.0",
+		"@types/fs-extra": "^5.0.5",
+		"@types/inquirer": "0.0.43",
+		"@types/listr": "^0.13.0",
+		"@types/next": "8.0.0",
+		"@types/node": "^11.9.3",
+		"@types/prismjs": "1.9.0",
+		"@types/react": "16.8.2",
+		"@types/react-dom": "16.8.0",
+		"@types/rebass": "3.0.1",
+		"@types/strip-indent": "2.0.0",
+		"@types/styled-components": "4.1.8",
+		"@types/yargs": "^12.0.8",
+		"prettier": "^1.16.4",
+		"ts-node": "^8.0.2",
+		"tslint": "^5.12.1",
+		"tslint-config-prettier": "^1.18.0",
+		"tslint-react": "^3.6.0",
+		"typescript": "3.3.3"
+	},
+	"engines": {
+		"node": ">=10"
+	},
+	"homepage": "https://github.com/petecorreia/tsx-docs",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/petecorreia/tsx-docs"
+	},
+	"bugs": "https://github.com/petecorreia/tsx-docs/issues",
+	"keywords": [
+		"docs",
+		"documentation",
+		"react",
+		"typescript",
+		"nextjs",
+		"styled-components",
+		"rebass"
+	]
+}

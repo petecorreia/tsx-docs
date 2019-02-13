@@ -1,0 +1,11 @@
+{
+	"extends": "./tsconfig",
+	"compilerOptions": {
+		"target": "es6",
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"jsx": "preserve",
+		"types": []
+	},
+	"include": ["src/bin/index.ts", "src/types.ts"]
+}
