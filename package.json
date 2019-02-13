@@ -21,13 +21,7 @@
 		"watch:bin": "tsc -w -p tsconfig.bin.json",
 		"prepare": "npm run build",
 		"format": "prettier --config .prettierrc --write \"src/**/*.{js,ts,tsx}\"",
-		"lint": "tslint -p tsconfig.json -c tslint.json",
-		"tsx-docs": "ts-node src/bin/index.ts",
-		"docs:dev": "npm run tsx-docs dev docs",
-		"docs:build": "npm run tsx-docs build docs",
-		"docs:start": "npm run tsx-docs start docs",
-		"docs:export": "npm run tsx-docs export docs",
-		"now-build": "npm run docs:build"
+		"lint": "tslint -p tsconfig.json -c tslint.json"
 	},
 	"dependencies": {
 		"@babel/preset-typescript": "7.1.0",

@@ -1,3 +1,3 @@
-import { Error } from '../../src/components'
+import { Error } from 'tsx-docs'
 
 export default Error

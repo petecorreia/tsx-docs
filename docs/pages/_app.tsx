@@ -1,4 +1,4 @@
-import { App } from '../../src/components'
+import { App } from 'tsx-docs'
 
 import '../static/fonts/fonts.css'
 

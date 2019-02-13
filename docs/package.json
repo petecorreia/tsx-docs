@@ -2,10 +2,23 @@
 	"name": "tsx-docs-docs",
 	"version": "0.0.1",
 	"scripts": {
+		"dev": "tsx-docs dev",
+		"build": "tsx-docs build",
+		"start": "tsx-docs start",
+		"export": "tsx-docs export",
+		"typecheck": "tsc",
 		"now-build": "tsx-docs build"
 	},
 	"dependencies": {
-		"next": "8.0.0",
+		"react": "^16.8.1",
+		"react-dom": "^16.8.1",
+		"next": "^8.0.0",
 		"tsx-docs": "latest"
-	}
+	},
+	"devDependencies": {
+		"@types/react": "16.8.2",
+		"@types/react-dom": "16.8.0",
+		"typescript": "3.2.4"
+	},
+	"license": "MIT"
 }
