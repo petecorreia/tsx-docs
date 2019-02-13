@@ -70,7 +70,5 @@ yargs
 	.demandCommand()
 	.help()
 	.wrap(100)
-	.epilog(
-		'for more information visit https://github.com/petecorreia/tsx-docs'
-	)
+	.epilog('for more information visit https://github.com/petecorreia/tsx-docs')
 	.showHelpOnFail(false, 'whoops, something went wrong! run with --help').argv // tslint:disable-line:no-unused-expression

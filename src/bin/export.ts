@@ -7,14 +7,14 @@ export default async function(dir = '.') {
 	if (!hasProject(dir)) return
 
 	const projectConfig = getProjectConfig(dir)
+	process.env.TSXDOCS_CONFIG = JSON.stringify(projectConfig)
+
 	const conf = getNextConfig(dir)
 	const exportConf = {
 		...conf,
 		distDir: conf.distDir || '.next',
 		assetPrefix: conf.assetPrefix || '',
 	}
-
-	process.env.TSXDOCS_CONFIG = JSON.stringify(projectConfig)
 
 	const options = {
 		silent: false,

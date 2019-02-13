@@ -156,11 +156,6 @@ Footer.defaultProps = {
 	as: 'footer',
 }
 
-function getTSXDocsConfig(): TSXDocsConfig {
-	const nextConfig = getNextConfig()
-	return nextConfig.serverRuntimeConfig.tsxDocsConfig
-}
-
 export class App extends NextApp {
 	static async getInitialProps({
 		Component,
@@ -175,7 +170,7 @@ export class App extends NextApp {
 			pageProps = await Component.getInitialProps(ctx)
 		}
 
-		const tsxDocsConfig = getTSXDocsConfig()
+		const tsxDocsConfig = JSON.parse(process.env.TSXDOCS_CONFIG as string)
 
 		return { pageProps: { ...pageProps, tsxDocsConfig } }
 	}
