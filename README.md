@@ -1,6 +1,6 @@
 # 📄 TSX Docs
 
-Minimalist documentation for your React / Typescript components powered by [Next.js](https://nextjs.org/), [Styled Components](https://www.styled-components.com/) and [Rebass](https://rebassjs.org/).
+Minimalist documentation with React Typescript powered by [Next.js](https://nextjs.org/), [Styled Components](https://www.styled-components.com/) and [Rebass](https://rebassjs.org/).
 
 [![Latest Release][github-release]][npm]
 [![Downloads][downloads-badge]][npm]
@@ -13,8 +13,15 @@ Minimalist documentation for your React / Typescript components powered by [Next
 [license]: https://flat.badgen.net/badge/license/MIT/blue
 [github-release]: https://flat.badgen.net/github/release/petecorreia/tsx-docs
 
+
+**Create a new documentation site**
 ```sh
-npm i tsx-docs
+npx tsx-docs init
+```
+
+**Once the application has been generated**
+```sh
+npm run dev
 ```
 
 ## Goals
@@ -25,12 +32,12 @@ npm i tsx-docs
 
 ## Getting Started
 
-To create a new documentation site, run `npm run tsx-docs` and follow the prompts.
-Once the application has been generated, see the [README.md](template/README.md) for more documentation.
+To create a new documentation site, run `npx tsx-docs init` and follow the prompts.
+Once the application has been generated run `npm run dev`.
 
 ## Documentation
 
-Read more at **[tsx-docs.now.sh](https://tsx-docs.now.sh)** (powered by tsx-docs!) and in the readme when initialised.
+Read more at **[tsx-docs.now.sh](https://tsx-docs.now.sh)** (powered by tsx-docs!).
 
 Enjoy! 🎉
 
