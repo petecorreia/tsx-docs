@@ -26,7 +26,8 @@
 		"docs:dev": "npm run tsx-docs dev docs",
 		"docs:build": "npm run tsx-docs build docs",
 		"docs:start": "npm run tsx-docs start docs",
-		"docs:export": "npm run tsx-docs export docs"
+		"docs:export": "npm run tsx-docs export docs",
+		"now-build": "npm run docs:build"
 	},
 	"dependencies": {
 		"@babel/preset-typescript": "7.1.0",

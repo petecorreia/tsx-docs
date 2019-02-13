@@ -1,0 +1,11 @@
+{
+	"name": "tsx-docs-docs",
+	"version": "0.0.1",
+	"scripts": {
+		"now-build": "tsx-docs build"
+	},
+	"dependencies": {
+		"next": "8.0.0",
+		"tsx-docs": "latest"
+	}
+}
