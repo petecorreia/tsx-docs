@@ -25,6 +25,7 @@
 		"tsx-docs": "ts-node src/bin/index.ts",
 		"docs:dev": "npm run tsx-docs dev docs",
 		"docs:build": "npm run tsx-docs build docs",
+		"docs:start": "npm run tsx-docs start docs",
 		"docs:export": "npm run tsx-docs export docs"
 	},
 	"dependencies": {

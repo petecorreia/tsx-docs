@@ -14,7 +14,7 @@ export default async function(dir = '.') {
 		assetPrefix: conf.assetPrefix || '',
 	}
 
-	process.env.REACT_TYPESCRIPT_DOCS_CONFIG = JSON.stringify(projectConfig)
+	process.env.TSXDOCS_CONFIG = JSON.stringify(projectConfig)
 
 	const options = {
 		silent: false,

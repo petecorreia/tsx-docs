@@ -9,6 +9,7 @@ export default async function(dir = '.') {
 	const conf = getNextConfig(dir)
 
 	const absDir = path.join(process.cwd(), dir)
+	console.log('absDir: ', absDir)
 
 	try {
 		log('Building...')

@@ -50,7 +50,7 @@ export function getNextConfig(dir: string): NextConfig {
 export function getDefaultNextConfig(projectConfig: TSXDocsConfig) {
 	return withCSS({
 		pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
-		publicRuntimeConfig: {
+		serverRuntimeConfig: {
 			tsxDocsConfig: projectConfig,
 		},
 		webpack(config: any, options: any) {

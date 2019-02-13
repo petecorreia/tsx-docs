@@ -1,5 +1,5 @@
 import React, { useState, FunctionComponent, ComponentProps } from 'react'
-import { Container, AppComponentProps } from 'next/app'
+import NextApp, { Container, AppComponentProps } from 'next/app'
 import Head from 'next/head'
 import NextLink from 'next/link'
 import styled, { ThemeProvider, css } from 'styled-components'
@@ -9,6 +9,7 @@ import { TSXDocsConfig } from '../types'
 // import './fonts.css'
 import { GlobalStyle } from './GlobalStyle'
 import { Lead } from './Lead'
+import { NextFunctionComponent, NextComponentType, NextContext } from 'next'
 
 type Props = AppComponentProps
 
@@ -155,107 +156,143 @@ Footer.defaultProps = {
 	as: 'footer',
 }
 
-export const App: FunctionComponent<Props> = ({ Component, ...props }) => {
-	const [isMenuOpen, setMenuOpen] = useState(false)
-	const {
-		title,
-		description,
-		routes,
-		theme,
-		author,
-		authorURL,
-	} = getNextDocsConfig()
-	const activeRoute = routes.find(({ path }) => path === props.router.asPath)
-	const pageTitle = !!activeRoute
-		? `${activeRoute.name} — ${title}`
-		: `${title} — ${description}`
-	return (
-		<ThemeProvider theme={theme}>
-			<Container>
-				<GlobalStyle />
-				<Main
-					mx="auto"
-					flexDirection="column"
-					px={[4, 5, 5, 6]}
-					pt={[4, 5, 5, 6]}
-					pb={4}
-				>
-					<Head>
-						<title>{pageTitle}</title>
-						<meta charSet="utf-8" />
-						<meta
-							name="viewport"
-							content="initial-scale=1.0, width=device-width"
-						/>
-						<meta name="description" content={description} />
-						<link rel="icon" type="image/x-icon" href="../static/favicon.ico" />
-					</Head>
-
-					<Content>
-						<Box as="header" width={[1, 1, 1 / 3]} pr={[0, 0, 4, 5]}>
-							<Title>
-								<MenuIcon
-									isOpen={isMenuOpen}
-									onClick={() => setMenuOpen(!isMenuOpen)}
-								>
-									<HamburgerIcon />
-								</MenuIcon>
-
-								<NextLink href="/" prefetch>
-									<a onClick={() => setMenuOpen(false)}>{title}</a>
-								</NextLink>
-							</Title>
-
-							<Nav isOpen={isMenuOpen}>
-								{routes.map(({ name, path }) => (
-									<NextLink
-										key={path}
-										href={path}
-										prefetch={path.startsWith('/')}
-									>
-										<HeaderLink
-											isActive={!!activeRoute && activeRoute.path === path}
-											href={path}
-											onClick={() => setMenuOpen(false)}
-										>
-											{name}
-										</HeaderLink>
-									</NextLink>
-								))}
-							</Nav>
-						</Box>
-
-						<ContentInner width={[1, 1, 2 / 3]} pt={[4, 4, 0, 0]}>
-							<Component {...props} />
-						</ContentInner>
-					</Content>
-
-					<Footer pt={4}>
-						© {new Date().getFullYear()}{' '}
-						{author ? (
-							authorURL ? (
-								<a href={authorURL}>{author}</a>
-							) : (
-								author
-							)
-						) : (
-							title
-						)}
-					</Footer>
-				</Main>
-			</Container>
-		</ThemeProvider>
-	)
+function getTSXDocsConfig(): TSXDocsConfig {
+	const nextConfig = getNextConfig()
+	return nextConfig.serverRuntimeConfig.tsxDocsConfig
 }
 
-function getNextDocsConfig(): TSXDocsConfig {
-	const nextConfig = getNextConfig()
+export class App extends NextApp {
+	static async getInitialProps({
+		Component,
+		ctx,
+	}: {
+		Component: NextComponentType
+		ctx: NextContext
+	}) {
+		let pageProps = {}
 
-	// this should only happen on next export
-	if (!nextConfig) {
-		// this env var is only available on static export
-		return JSON.parse(process.env.REACT_TYPESCRIPT_DOCS_CONFIG as string)
+		if (Component.getInitialProps) {
+			pageProps = await Component.getInitialProps(ctx)
+		}
+
+		const tsxDocsConfig = getTSXDocsConfig()
+
+		return { pageProps: { ...pageProps, tsxDocsConfig } }
 	}
 
-	return nextConfig.publicRuntimeConfig.tsxDocsConfig
+	static getDerivedStateFromProps(
+		props: { pageProps: { tsxDocsConfig: TSXDocsConfig } },
+		state: { tsxDocsConfig: TSXDocsConfig }
+	) {
+		return {
+			tsxDocsConfig: props.pageProps.tsxDocsConfig || state.tsxDocsConfig,
+		}
+	}
+
+	state = {
+		isMenuOpen: false,
+		tsxDocsConfig: {},
+	}
+
+	render() {
+		const { Component, pageProps, router } = this.props
+		const { isMenuOpen, tsxDocsConfig } = this.state
+
+		const {
+			title,
+			description,
+			routes,
+			theme,
+			author,
+			authorURL,
+		} = tsxDocsConfig as TSXDocsConfig
+
+		const activeRoute = routes.find(({ path }) => path === router.asPath)
+		const pageTitle = !!activeRoute
+			? `${activeRoute.name} — ${title}`
+			: `${title} — ${description}`
+		return (
+			<ThemeProvider theme={theme}>
+				<Container>
+					<GlobalStyle />
+					<Main
+						mx="auto"
+						flexDirection="column"
+						px={[4, 5, 5, 6]}
+						pt={[4, 5, 5, 6]}
+						pb={4}
+					>
+						<Head>
+							<title>{pageTitle}</title>
+							<meta charSet="utf-8" />
+							<meta
+								name="viewport"
+								content="initial-scale=1.0, width=device-width"
+							/>
+							<meta name="description" content={description} />
+							<link
+								rel="icon"
+								type="image/x-icon"
+								href="../static/favicon.ico"
+							/>
+						</Head>
+
+						<Content>
+							<Box as="header" width={[1, 1, 1 / 3]} pr={[0, 0, 4, 5]}>
+								<Title>
+									<MenuIcon
+										isOpen={isMenuOpen}
+										onClick={() => this.setState({ isMenuOpen: !isMenuOpen })}
+									>
+										<HamburgerIcon />
+									</MenuIcon>
+
+									<NextLink href="/" prefetch>
+										<a onClick={() => this.setState({ isMenuOpen: false })}>
+											{title}
+										</a>
+									</NextLink>
+								</Title>
+
+								<Nav isOpen={isMenuOpen}>
+									{routes.map(({ name, path }) => (
+										<NextLink
+											key={path}
+											href={path}
+											prefetch={path.startsWith('/')}
+										>
+											<HeaderLink
+												isActive={!!activeRoute && activeRoute.path === path}
+												href={path}
+												onClick={() => this.setState({ isMenuOpen: false })}
+											>
+												{name}
+											</HeaderLink>
+										</NextLink>
+									))}
+								</Nav>
+							</Box>
+
+							<ContentInner width={[1, 1, 2 / 3]} pt={[4, 4, 0, 0]}>
+								<Component {...pageProps} />
+							</ContentInner>
+						</Content>
+
+						<Footer pt={4}>
+							© {new Date().getFullYear()}{' '}
+							{author ? (
+								authorURL ? (
+									<a href={authorURL}>{author}</a>
+								) : (
+									author
+								)
+							) : (
+								title
+							)}
+						</Footer>
+					</Main>
+				</Container>
+			</ThemeProvider>
+		)
+	}
 }
