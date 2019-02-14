@@ -34,11 +34,17 @@ export class Document extends NextDocument {
 		return (
 			<html>
 				<Head>
+					<meta charSet="utf-8" />
+					<meta
+						name="viewport"
+						content="initial-scale=1.0, width=device-width"
+					/>
 					<link
 						rel="stylesheet"
 						type="text/css"
 						href="/static/fonts/fonts.css"
 					/>
+					<link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
 				</Head>
 				<body className="tsx-docs">
 					<Main />

@@ -219,17 +219,7 @@ export class App extends NextApp {
 					>
 						<Head>
 							<title>{pageTitle}</title>
-							<meta charSet="utf-8" />
-							<meta
-								name="viewport"
-								content="initial-scale=1.0, width=device-width"
-							/>
 							<meta name="description" content={description} />
-							<link
-								rel="icon"
-								type="image/x-icon"
-								href="../static/favicon.ico"
-							/>
 						</Head>
 
 						<Content>
