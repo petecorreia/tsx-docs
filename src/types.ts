@@ -1,3 +1,7 @@
+import { NextConfig } from 'next'
+
+type NextConfigFunction = (nextConfig: NextConfig) => NextConfig
+
 export type TSXDocsConfig = {
 	root?: string
 	include?: string[]
@@ -8,6 +12,7 @@ export type TSXDocsConfig = {
 	authorURL?: string
 	routes: TSXDocsRoute[]
 	theme: TSXDocsTheme
+	nextConfig?: NextConfig | NextConfigFunction
 }
 
 export type TSXDocsRoute = {

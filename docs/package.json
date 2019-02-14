@@ -7,7 +7,8 @@
 		"start": "tsx-docs start",
 		"export": "tsx-docs export",
 		"typecheck": "tsc",
-		"now-build": "tsx-docs build"
+		"now-build": "tsx-docs build",
+		"deploy": "now && now alias"
 	},
 	"dependencies": {
 		"react": "^16.8.1",

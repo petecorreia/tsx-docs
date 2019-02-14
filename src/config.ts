@@ -1,6 +1,7 @@
 import { TSXDocsConfig } from './types'
 import { NextConfig } from 'next'
 import path from 'path'
+import merge from 'lodash.merge'
 const withCSS = require('@zeit/next-css')
 
 const defaultProjectConfig: TSXDocsConfig = {
@@ -47,50 +48,59 @@ export function getNextConfig(dir: string): NextConfig {
 	}
 }
 
-export function getDefaultNextConfig(projectConfig: TSXDocsConfig) {
-	return withCSS({
-		pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
-		env: {
-			TSXDOCS_CONFIG: JSON.stringify(projectConfig),
-		},
-		webpack(config: any, options: any) {
-			const { dir, defaultLoaders, dev, isServer } = options
+export function getDefaultNextConfig({
+	nextConfig,
+	...projectConfig
+}: TSXDocsConfig) {
+	return withCSS(
+		merge(
+			{},
+			{
+				pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
+				env: {
+					TSXDOCS_CONFIG: JSON.stringify(projectConfig),
+				},
+				webpack(config: any, options: any) {
+					const { dir, defaultLoaders, dev, isServer } = options
 
-			config.resolve.extensions.push('.ts', '.tsx')
+					config.resolve.extensions.push('.ts', '.tsx')
 
-			const includeDirs = (projectConfig.include || []).map(p =>
-				path.join(dir, p)
-			)
+					const includeDirs = (projectConfig.include || []).map(p =>
+						path.join(dir, p)
+					)
 
-			if (!defaultLoaders.hotSelfAccept) {
-				if (dev && !isServer) {
+					if (!defaultLoaders.hotSelfAccept) {
+						if (dev && !isServer) {
+							config.module.rules.push({
+								test: /\.(js|jsx|ts|tsx)$/,
+								loader: 'hot-self-accept-loader',
+								include: [path.join(dir, 'pages'), ...includeDirs],
+								options: {
+									extensions: /\.(js|jsx|ts|tsx)$/,
+								},
+							})
+						}
+					}
+
 					config.module.rules.push({
 						test: /\.(js|jsx|ts|tsx)$/,
-						loader: 'hot-self-accept-loader',
-						include: [path.join(dir, 'pages'), ...includeDirs],
-						options: {
-							extensions: /\.(js|jsx|ts|tsx)$/,
+						include: [dir, ...includeDirs],
+						exclude: /node_modules/,
+						use: {
+							...defaultLoaders.babel,
+							options: {
+								...defaultLoaders.babel.options,
+								presets: ['@babel/preset-typescript'],
+							},
 						},
 					})
-				}
-			}
 
-			config.module.rules.push({
-				test: /\.(js|jsx|ts|tsx)$/,
-				include: [dir, ...includeDirs],
-				exclude: /node_modules/,
-				use: {
-					...defaultLoaders.babel,
-					options: {
-						...defaultLoaders.babel.options,
-						presets: ['@babel/preset-typescript'],
-					},
+					return config
 				},
-			})
-
-			return config
-		},
-	})
+			},
+			nextConfig
+		)
+	)
 }
 
 export function getUserProjectConfig(dir: string): TSXDocsConfig | undefined {
