@@ -5,7 +5,8 @@
 	"builds": [
 		{
 			"src": "docs/tsx-docs.config.js",
-			"use": "petecorreia/now-tsx-docs"
+			"use": "petecorreia/now-tsx-docs",
+			"config": { "staticDir": "docs/static" }
 		}
 	],
 	"routes": [
