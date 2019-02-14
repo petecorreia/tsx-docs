@@ -14,5 +14,5 @@
 		"jsx": "react",
 		"types": ["node"]
 	},
-	"include": ["src/components/index.ts", "src/types.ts"]
+	"include": ["src/index.ts", "src/types.ts"]
 }

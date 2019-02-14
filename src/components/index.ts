@@ -1,7 +1,0 @@
-export { App } from './App'
-export { Document } from './Document'
-export { Error } from './Error'
-export { GlobalStyle } from './GlobalStyle'
-export { Lead } from './Lead'
-export { Link } from './Link'
-export { CodeHighlight } from './CodeHighlight'

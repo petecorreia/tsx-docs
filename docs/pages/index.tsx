@@ -1,6 +1,5 @@
 import React from 'react'
 import { Lead, CodeHighlight, Link } from 'tsx-docs'
-console.log('Link: ', Link)
 
 const IndexPage = () => (
 	<>
