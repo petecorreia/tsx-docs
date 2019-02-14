@@ -12,7 +12,6 @@
 	"dependencies": {
 		"react": "^16.8.1",
 		"react-dom": "^16.8.1",
-		"next": "^8.0.0",
 		"tsx-docs": "latest"
 	},
 	"devDependencies": {

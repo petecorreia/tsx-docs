@@ -5,7 +5,7 @@
 	"builds": [
 		{
 			"src": "next.config.js",
-			"use": "@now/next"
+			"use": "petecorreia/now-tsx-docs"
 		}
 	],
 	"regions": ["gru"]
