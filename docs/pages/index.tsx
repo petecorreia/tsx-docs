@@ -10,10 +10,24 @@ const IndexPage = () => (
 
 		<CodeHighlight
 			code={`
-				npm init next-docs
+				npx tsx-docs init [dir]
 			`}
 			language="bash"
 		/>
+
+		<p>Once the application has been generated, cd into it and:</p>
+
+		<CodeHighlight
+			code={`
+				cd [dir]
+				npm run dev
+			`}
+			language="bash"
+		/>
+
+		<p>
+			Visit <a href="http://localhost:3000">http://localhost:3000</a>! 🎉
+		</p>
 
 		<h2>Goals</h2>
 
@@ -32,8 +46,9 @@ const IndexPage = () => (
 		<h2>Getting Started</h2>
 
 		<p>
-			To create a new documentation site, run <code>npm init next-docs</code>{' '}
-			and follow the prompts.
+			To create a new documentation site, run <code>npx tsx-docs init</code> and
+			follow the prompts. Once the application has been generated run{' '}
+			<code>npm run dev</code>.
 		</p>
 
 		<p>
@@ -68,19 +83,26 @@ const IndexPage = () => (
 
 		<CodeHighlight
 			code={`
-				npm install
 				npm run dev
 			`}
 			language="bash"
 		/>
 
-		<h3>Build for deployment</h3>
+		<h3>Build for production</h3>
 
 		<CodeHighlight
 			code={`
 				npm run build
-				# ...or for static exports use:
-				npm run build-static
+				npm run start
+			`}
+			language="bash"
+		/>
+
+		<h3>Static export</h3>
+
+		<CodeHighlight
+			code={`
+				npm run export
 			`}
 			language="bash"
 		/>

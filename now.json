@@ -5,8 +5,7 @@
 	"builds": [
 		{
 			"src": "docs/tsx-docs.config.js",
-			"use": "petecorreia/now-tsx-docs",
-			"config": { "staticDir": "docs/static" }
+			"use": "petecorreia/now-tsx-docs"
 		}
 	],
 	"routes": [
@@ -15,6 +14,5 @@
 			"dest": "docs$1"
 		}
 	],
-	"regions": ["gru", "sfo", "bru"],
-	"public": true
+	"regions": ["gru", "sfo", "bru"]
 }

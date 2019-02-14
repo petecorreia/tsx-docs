@@ -8,4 +8,7 @@ module.exports = {
 			path: 'https://github.com/petecorreia/tsx-docs',
 		},
 	],
+	nextConfig: {
+		target: 'serverless',
+	},
 }

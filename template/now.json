@@ -1,0 +1,9 @@
+{
+	"version": 2,
+	"builds": [
+		{
+			"src": "tsx-docs.config.js",
+			"use": "petecorreia/now-tsx-docs"
+		}
+	]
+}
