@@ -1,5 +1,10 @@
 import React from 'react'
-import NextDocument, { NextDocumentContext } from 'next/document'
+import NextDocument, {
+	Head,
+	Main,
+	NextScript,
+	NextDocumentContext,
+} from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
 export class Document extends NextDocument {
@@ -23,5 +28,23 @@ export class Document extends NextDocument {
 		} finally {
 			;(sheet as any).seal()
 		}
+	}
+
+	render() {
+		return (
+			<html>
+				<Head>
+					<link
+						rel="stylesheet"
+						type="text/css"
+						href="/static/fonts/fonts.css"
+					/>
+				</Head>
+				<body className="tsx-docs">
+					<Main />
+					<NextScript />
+				</body>
+			</html>
+		)
 	}
 }
