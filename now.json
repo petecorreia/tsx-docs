@@ -14,5 +14,6 @@
 			"dest": "docs$1"
 		}
 	],
-	"regions": ["gru"]
+	"regions": ["gru"],
+	"public": true
 }
