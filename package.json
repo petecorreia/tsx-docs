@@ -1,6 +1,6 @@
 {
 	"name": "tsx-docs",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"description": "Cocumentation for your React Typescript components powered by Next.js, Styled Components and Rebass.",
 	"author": "Pete Correia <pete@petecorreia.com> (https://petecorreia.com)",
 	"license": "MIT",
