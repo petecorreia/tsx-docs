@@ -4,8 +4,14 @@
 	"alias": "tsx-docs",
 	"builds": [
 		{
-			"src": "next.config.js",
+			"src": "docs/tsx-docs.config.js",
 			"use": "petecorreia/now-tsx-docs"
+		}
+	],
+	"routes": [
+		{
+			"src": "^(.*)$",
+			"dest": "docs$1"
 		}
 	],
 	"regions": ["gru"]
