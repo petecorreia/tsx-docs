@@ -226,8 +226,13 @@ export class App extends NextApp<Props> {
 						</Head>
 
 						<Content>
-							<Box as="header" width={[1, 1, 1 / 3]} pr={[0, 0, 4, 5]}>
-								<Title>
+							<Box
+								as="header"
+								width={[1, 1, 1 / 3]}
+								pr={[0, 0, 4, 5]}
+								className="app-header"
+							>
+								<Title className="app-title">
 									<MenuIcon
 										isOpen={isMenuOpen}
 										onClick={() => this.setState({ isMenuOpen: !isMenuOpen })}
@@ -242,7 +247,7 @@ export class App extends NextApp<Props> {
 									</NextLink>
 								</Title>
 
-								<Nav isOpen={isMenuOpen}>
+								<Nav isOpen={isMenuOpen} className="app-nav">
 									{routes.map(({ name, path }) => (
 										<NextLink
 											key={path}
@@ -266,7 +271,7 @@ export class App extends NextApp<Props> {
 							</ContentInner>
 						</Content>
 
-						<Footer pt={4}>
+						<Footer pt={4} className="app-footer">
 							© {new Date().getFullYear()}{' '}
 							{author ? (
 								authorURL ? (
