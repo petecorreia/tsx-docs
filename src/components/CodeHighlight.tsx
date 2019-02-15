@@ -12,6 +12,7 @@ import 'prismjs/components/prism-json'
 type Props = {
 	code: string
 	language?: 'tsx' | 'jsx' | 'ts' | 'js' | 'json' | 'bash'
+	className?: string
 }
 
 const defaultProps: Partial<Props> = {
@@ -125,6 +126,7 @@ export const CodeHighlight: FunctionComponent<Props> = ({
 	code,
 	language,
 	children,
+	className,
 }) => {
 	const ref = useRef<HTMLPreElement | null>(null)
 
@@ -134,7 +136,7 @@ export const CodeHighlight: FunctionComponent<Props> = ({
 	}, [code, language, ref])
 
 	return (
-		<Wrapper>
+		<Wrapper className={className}>
 			{children && <Preview>{children}</Preview>}
 			<Code ref={ref} className={`language-${language}`}>
 				{tidyCode(code)}

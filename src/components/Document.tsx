@@ -4,10 +4,15 @@ import NextDocument, {
 	Main,
 	NextScript,
 	NextDocumentContext,
+	DocumentProps,
 } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
-export class Document extends NextDocument {
+type Props = DocumentProps & {
+	className?: string
+}
+
+export class Document extends NextDocument<Props> {
 	static async getInitialProps(ctx: NextDocumentContext) {
 		const sheet = new ServerStyleSheet()
 		const originalRenderPage = ctx.renderPage
@@ -46,7 +51,7 @@ export class Document extends NextDocument {
 					/>
 					<link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
 				</Head>
-				<body className="tsx-docs">
+				<body className={this.props.className}>
 					<Main />
 					<NextScript />
 				</body>

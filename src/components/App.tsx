@@ -11,7 +11,9 @@ import { GlobalStyle } from './GlobalStyle'
 import { Lead } from './Lead'
 import { NextFunctionComponent, NextComponentType, NextContext } from 'next'
 
-type Props = AppComponentProps
+type Props = AppComponentProps & {
+	className?: string
+}
 
 const Main = styled(Flex)`
 	max-width: 1290px;
@@ -156,7 +158,7 @@ Footer.defaultProps = {
 	as: 'footer',
 }
 
-export class App extends NextApp {
+export class App extends NextApp<Props> {
 	static async getInitialProps({
 		Component,
 		ctx,
@@ -190,7 +192,7 @@ export class App extends NextApp {
 	}
 
 	render() {
-		const { Component, pageProps, router } = this.props
+		const { Component, pageProps, router, className } = this.props
 		const { isMenuOpen, tsxDocsConfig } = this.state
 
 		const {
@@ -216,6 +218,7 @@ export class App extends NextApp {
 						px={[4, 5, 5, 6]}
 						pt={[4, 5, 5, 6]}
 						pb={4}
+						className={className}
 					>
 						<Head>
 							<title>{pageTitle}</title>
