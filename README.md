@@ -39,6 +39,11 @@ Once the application has been generated run `npm run dev`.
 
 Read more at **[tsx-docs.now.sh](https://tsx-docs.now.sh)** (powered by tsx-docs!).
 
+## Examples
+
+* **[tsx-docs](https://tsx-docs.now.sh)**
+* **[react-circular-input](https://react-circular-input.now.sh)**
+
 Enjoy! 🎉
 
 #### Prior Art
