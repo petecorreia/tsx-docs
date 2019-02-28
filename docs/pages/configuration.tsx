@@ -1,8 +1,11 @@
 import React from 'react'
 import { CodeHighlight } from 'tsx-docs'
+import SEO from '../components/SEO'
 
 export default () => (
 	<>
+		<SEO />
+
 		<p>
 			You can edit <code>tsx-docs.config.js</code> to customise your docs. It's
 			generated for you and it's located at the root of the project.

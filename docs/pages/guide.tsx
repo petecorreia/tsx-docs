@@ -1,8 +1,10 @@
 import React from 'react'
 import { CodeHighlight, Link } from 'tsx-docs'
+import SEO from '../components/SEO'
 
 export default () => (
 	<>
+		<SEO />
 		<p>
 			After running <code>npx tsx-docs init</code> and following the prompts,
 			your project is generated in the specified folder.
@@ -108,14 +110,16 @@ export default () => (
 			.
 		</p>
 		<hr />
-		Have a look at all{' '}
-		<Link href="/configuration" prefetch>
-			<a>configuration options</a>
-		</Link>{' '}
-		and the provided{' '}
-		<Link href="/components" prefetch>
-			<a>components</a>
-		</Link>
+		<p>
+			Have a look at all{' '}
+			<Link href="/configuration" prefetch>
+				<a>configuration options</a>
+			</Link>{' '}
+			and the provided{' '}
+			<Link href="/components" prefetch>
+				<a>components</a>
+			</Link>
+		</p>
 		.
 	</>
 )

@@ -1,8 +1,11 @@
 import React from 'react'
 import { Lead, CodeHighlight, Link } from 'tsx-docs'
+import SEO from '../components/SEO'
 
 const IndexPage = () => (
 	<>
+		<SEO />
+
 		<Lead>
 			Minimalist documentation with React Typescript powered by Next.js, Styled
 			Components and Rebass.

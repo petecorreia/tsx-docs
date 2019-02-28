@@ -1,8 +1,11 @@
 import React from 'react'
 import { CodeHighlight, Lead } from 'tsx-docs'
+import SEO from '../components/SEO'
 
 export default () => (
 	<>
+		<SEO />
+
 		<p>
 			We provide <strong>components</strong> to get you going fast when
 			documenting your components or libraries. These are built to look great
