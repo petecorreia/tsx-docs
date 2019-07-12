@@ -24,7 +24,7 @@
 		"lint": "tslint -p tsconfig.json -c tslint.json"
 	},
 	"dependencies": {
-		"@babel/preset-typescript": "7.1.0",
+		"@babel/preset-typescript": "7.3.3",
 		"@zeit/next-css": "1.0.1",
 		"chalk": "2.4.2",
 		"execa": "^1.0.0",
