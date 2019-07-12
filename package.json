@@ -58,7 +58,7 @@
 		"@types/react": "16.8.2",
 		"@types/react-dom": "16.8.0",
 		"@types/rebass": "3.0.1",
-		"@types/strip-indent": "2.0.0",
+		"@types/strip-indent": "3.0.2",
 		"@types/styled-components": "4.1.8",
 		"@types/yargs": "^12.0.8",
 		"prettier": "^1.16.4",
