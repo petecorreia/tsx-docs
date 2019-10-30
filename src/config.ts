@@ -1,7 +1,7 @@
 import { TSXDocsConfig } from './types'
-import { NextConfig } from 'next'
 import path from 'path'
 import merge from 'lodash.merge'
+import { NextConfig } from 'next-server/next-config'
 const withCSS = require('@zeit/next-css')
 
 const defaultProjectConfig: TSXDocsConfig = {

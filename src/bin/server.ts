@@ -26,8 +26,7 @@ export default async function(
 		createServer((req, res) => {
 			const parsedUrl = parse(req.url as string, true)
 			handle(req, res, parsedUrl)
-		}).listen(port, (err: any) => {
-			if (err) throw err
+		}).listen(port, () => {
 			console.log(`> Ready on http://localhost:${port}`)
 		})
 	})

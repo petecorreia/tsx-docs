@@ -1,4 +1,4 @@
-import { NextConfig } from 'next'
+import { NextConfig } from 'next-server/next-config'
 
 type NextConfigFunction = (nextConfig: NextConfig) => NextConfig
 

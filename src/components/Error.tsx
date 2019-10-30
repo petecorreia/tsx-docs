@@ -1,11 +1,14 @@
 import React from 'react'
-import { NextFunctionComponent } from 'next'
+import { NextComponentType, NextPageContext } from 'next'
 import NextLink from 'next/link'
 
-export const Error: NextFunctionComponent<{
+type Props = {
 	statusCode: string
-	className?: string
-}> = ({ statusCode, className }) => (
+}
+
+export const Error: NextComponentType<NextPageContext, Props, Props> = ({
+	statusCode,
+}) => (
 	<>
 		{statusCode ? (
 			<p>`An error ${statusCode} occurred on the server.`</p>

@@ -1,17 +1,16 @@
-import React, { useState, FunctionComponent, ComponentProps } from 'react'
-import NextApp, { Container, AppComponentProps } from 'next/app'
+import React, { FunctionComponent, ComponentProps } from 'react'
+import NextApp, { Container, AppProps } from 'next/app'
 import Head from 'next/head'
 import NextLink from 'next/link'
 import styled, { ThemeProvider, css } from 'styled-components'
 import { Box, Flex } from 'rebass'
-import getNextConfig from 'next/config'
 import { TSXDocsConfig } from '../types'
 // import './fonts.css'
 import { GlobalStyle } from './GlobalStyle'
 import { Lead } from './Lead'
-import { NextFunctionComponent, NextComponentType, NextContext } from 'next'
+import { NextComponentType, NextPageContext } from 'next'
 
-type Props = AppComponentProps & {
+type Props = AppProps & {
 	className?: string
 }
 
@@ -164,7 +163,7 @@ export class App extends NextApp<Props> {
 		ctx,
 	}: {
 		Component: NextComponentType
-		ctx: NextContext
+		ctx: NextPageContext
 	}) {
 		let pageProps = {}
 
